@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Course = ({course,handleAddToCart}) => {
+const Course = ({course,handleAddToCart,handleTotalCredit}) => {
 
     const { title, cover, description, price, credit } = course;
     // console.log(course);
@@ -15,7 +15,7 @@ const Course = ({course,handleAddToCart}) => {
         //     <button className='bg-blue-500'>Select</button>
         // </div>
 
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100  m-4 rounded-lg shadow-2xl">
             <figure className="px-10 pt-10">
                 <img src={cover} alt={`Cover picture of the title ${title}`} className="rounded-xl mb-4" />
                 <h2 className="card-title font-semibold mb-3 text-lg">{title}</h2>
@@ -41,9 +41,9 @@ const Course = ({course,handleAddToCart}) => {
 
             </div>
 
-            <div onClick={()=>handleAddToCart(course)} className="card-body items-center m-4 rounded-xl bg-blue-500 text-center">
-                {/* <button onClick={()=>handleAddToCart(course)} className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">Select</button> */}
-                <button  className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">
+            <div onClick={()=>handleAddToCart(course)}  className="card-body items-center m-4 rounded-xl bg-blue-500 text-center">
+                {/* <button onClick={()=>handleAddToCart(course)}   onClick={()=>handleTotalCredit(credit)}  className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">Select</button> */}
+                <button className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">
                     <div>
                     Select
                     </div>
@@ -59,8 +59,9 @@ const Course = ({course,handleAddToCart}) => {
 
 
 Course.propTypes = {
-    blog: PropTypes.object.isRequired,
-    handleAddToCart: PropTypes.func
+    course: PropTypes.object.isRequired,
+    handleAddToCart: PropTypes.func,
+    handleTotalCredit: PropTypes.func
 }
 
 export default Course;

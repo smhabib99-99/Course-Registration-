@@ -9,6 +9,9 @@ function App() {
 
   const [cart,setCart] = useState([]);
 
+  const [totalCredit, setTotalCredit] = useState(0);
+
+
   const handleAddToCart = course =>{
     // console.log(course);
     const newCart=[...cart,course];
@@ -16,12 +19,19 @@ function App() {
   }
 
 
+  const handleTotalCredit = hour =>{
+
+    const newTotalCredit = totalCredit + hour;
+    setTotalCredit(newTotalCredit);
+    // console.log("total credit :", hour);
+  }
+
   return (
     <>
 
       <Header></Header>
       <div className='md:flex max-w-full mb-10 ml-10 mx-auto'>
-      <Courses handleAddToCart={handleAddToCart} ></Courses>
+      <Courses handleAddToCart={handleAddToCart} handleTotalCredit={handleTotalCredit} totalCredit={totalCredit} ></Courses>
       <Cart cart={cart} ></Cart>
       </div>
 
