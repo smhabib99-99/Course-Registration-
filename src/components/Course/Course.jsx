@@ -38,15 +38,14 @@ const Course = ({ course }) => {
                     <p className='font-medium text-base'>Credit : {credit}<span>hr</span> </p>
                 </div>
 
-                
+
             </div>
 
-            <div className="card-body items-center text-center">
-
-
-                <div className="card-actions mb-4 rounded-lg h-11 bg-blue-500">
-                    <button className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white">Select</button>
-                </div>
+            <div className="card-body items-center gap-4 m-4 rounded-xl bg-blue-500 text-center">
+                <button className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">Select</button>
+                {/* <div className="card-actions mb-4 rounded-lg h-11 bg-blue-500">
+                    
+                </div> */}
             </div>
         </div>
     );
