@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import Courses from './components/Courses/Courses'
 import Cart from './components/Cart/Cart'
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 function App() {
 
@@ -13,16 +14,35 @@ function App() {
   const [remainingTotal, setRemainingTotal]= useState(20)
 
 
-  const handleAddToCart = (course, credit) =>{
-    // console.log(course);
-    const newCart=[...cart,course];
-    setCart(newCart);
 
+  const handleAddToCart = (course, credit, id) =>{
+    const isExist = cart.find(singleCart => singleCart.id === id)
+    if(isExist){
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Already in Cart!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+      
+    }
     const currentTotalCredit = totalCredit + credit;
-    setTotalCredit(currentTotalCredit)
-
     const currentRemainingTotal = 20 -currentTotalCredit;
+    if(currentTotalCredit > 20 && currentRemainingTotal < 0){
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Your Credit limit will exceed!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+      
+    }
+    else{
+      const newCart=[...cart,course];
+    setCart(newCart);
+    setTotalCredit(currentTotalCredit)
     setRemainingTotal(currentRemainingTotal)
+    }
   }
 
 
