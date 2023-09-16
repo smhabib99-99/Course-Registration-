@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-const Course = ({course,handleAddToCart,handleTotalCredit}) => {
+const Course = ({course,handleAddToCart}) => {
 
-    const { title, cover, description, price, credit } = course;
+    const { id, title, cover, description, price, credit } = course;
     // console.log(course);
     return (
         // <div className='mb-10'>
@@ -41,7 +41,7 @@ const Course = ({course,handleAddToCart,handleTotalCredit}) => {
 
             </div>
 
-            <div onClick={()=>handleAddToCart(course)}  className="card-body items-center m-4 rounded-xl bg-blue-500 text-center">
+            <div onClick={()=>handleAddToCart(course, credit, id)}  className="card-body items-center m-4 rounded-xl bg-blue-500 text-center">
                 {/* <button onClick={()=>handleAddToCart(course)}   onClick={()=>handleTotalCredit(credit)}  className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">Select</button> */}
                 <button className="rounded-lg text-center mt-2 mb-2 font-semibold text-lg text-white ">
                     <div>
@@ -64,4 +64,5 @@ Course.propTypes = {
     handleTotalCredit: PropTypes.func
 }
 
+// export default Course;
 export default Course;
